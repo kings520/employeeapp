@@ -1,0 +1,157 @@
+﻿/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+   
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.navbar-nav > li:hover ul {
+    display: block;
+}
+button[name=provider]{
+    min-width:150px;
+    color:#fff;
+    text-align:left;
+    font-size: 20px;
+}
+
+button[value=Facebook]{
+    background-color:#3A5795;
+}
+button[value=Google]{
+    background-color:#D8432E;
+}
+button[value=Twitter]{
+    background-color:#00AFF0;
+}
+.form-horizontal label{text-align:left !important;}
+button[value=Microsoft]{
+    background-color:#FFB900;
+}
+/* Set widths on the form inputs since otherwise they're 100% wide */
+input,
+select,
+textarea {
+    max-width: 500px ;
+}
+.login-reg-link {
+  text-align: right;
+  margin-top: 5px;
+  z-index:5;
+}
+.error{
+padding: 6px 35px;
+background: url("/images/button_error.png") 5px 50% no-repeat; 
+background-color:#E89A92;
+position: relative;
+text-align:left;
+max-width:500px;
+    display: block;
+    color:#000;
+    margin: 10px;
+}
+.success{
+padding: 6px 36px;
+background: url("/images/button_success.png") 5px 50% no-repeat; 
+background-color:#A4E7A4;
+position: relative;
+text-align:left;
+max-width:500px;
+    display: block;
+    color:#000;
+    margin: 10px;
+}
+.login-reg-link a{color:#fff; font-size:15px;display: inline-block;margin-right: 20px;}
+.login-reg-link a:hover{color:#fdb45e; background-color:transparent !important;}
+.input-group-addon{height:34px;}
+.quiz-summary-wrapper{
+   position: absolute;
+  background: rgba(0,0,0,.9);
+  right: 0;
+  bottom: 0;
+  top: 0;
+  height: 400%;
+  width: 100%;
+  z-index: 1;
+  color:#fff;
+ display:none;
+}
+.quiz-summary-wrapper .quiz-summary-footer,.quiz-summary-wrapper .quiz-summary-footer-final{display:none;}
+.quiz-summary-wrapper .quiz-summary-inner{
+      max-width: 700px;
+  margin: 50px auto;
+  padding: 30px;
+}
+.quiz-summary-wrapper .quiz-summary-inner h1{
+    color: rgb(19, 199, 6);
+  font-weight: 900;
+  text-shadow: 2px 2px 0px #fff;
+  font-size: 60px;
+  text-align:center;
+  font-family:'Lucida Handwriting';
+  margin-bottom:50px;
+}
+    .quiz-summary-wrapper .quiz-summary-inner h2 {
+        margin:20px 0;
+    }
+    .quiz-summary-wrapper hr{margin:20px 0 !important;}
+
+.quiz-summary-wrapper .quiz-summary-inner .star-wrapper i{text-shadow: 4px 2px 4px #fff; font-size: 70px;color:yellow;}
+.quiz-summary-wrapper .failure-wrapper h1 {color:#d9534f;}
+.quiz-summary-wrapper .failure-wrapper a.retry-button {
+    /*font-size: 30px;
+  border-radius: 71%;
+  text-align: center;
+  height: 199px;
+  width: 199px;
+  display:block; margin:0 auto;*/
+}
+    .quiz-summary-wrapper .failure-wrapper a span {
+        /*display:block; margin-top:44%;*/
+    }
+/* Responsive: Portrait tablets and up */
+
+.divider-authen{
+   position:relative;
+}
+.divider-authen .divider-authen-line{
+  min-height: 300px !important;
+border-right: 1px solid #DDD;
+margin-left: 37px;
+width: 0px;
+}
+.divider-authen .divider-authen-text{
+position: absolute;
+border-radius: 50%;
+width: 40px;
+height: 40px;
+background-color: #fff;
+top: 111px;
+left: 33px;
+font-size: 20px;
+padding: 8px 4px 0;
+border: 1px solid #ddd;
+color: #888;
+}
+.question-wrapper{margin-bottom:20px;}
+.question-wrapper .question-number{color:#2F6A03;font-weight:bold;}
+.question-wrapper .question{color:#2F6A03;font-weight:bold;}
+.question-wrapper .qtn-number-wrapper p{padding:0; font-size:15px;}
+.question-wrapper .solution-button-wrapper{margin-top:10px;}
+.navbar-nav > li:hover ul{ display: block;}
+ul.default-list{list-style:inherit;}
+ol.default-list{list-style:decimal;}
+@media screen and (min-width: 768px) {
+    .jumbotron {
+        margin-top: 20px;
+    }
+    .body-content {
+        padding: 0;
+    }
+}

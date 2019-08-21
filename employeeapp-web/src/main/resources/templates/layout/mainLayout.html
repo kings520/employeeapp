@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html th:fragment="layout (template, menu)" xmlns:th="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>JCart Admin</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+    <link rel="stylesheet" th:href="@{/assets/plugin/bootstrap/css/bootstrap.css}"/>
+    <link rel="stylesheet"  th:href="@{/dist/css/AdminLTE.min.css}"/>
+    <link rel="stylesheet" th:href="@{/dist/css/skins/skin-blue.min.css}"/>
+    <link  href="/fontawesome-5.9.0/css/all.css" th:href="@{/font-awesome-5.9.0/css/all.css}" rel="stylesheet" />
+    <link  href="/fontawesome-5.9.0/css/fontawesome.css" th:href="@{/font-awesome-5.9.0/css/fontawesome.css}" rel="stylesheet" />
+    <link rel="stylesheet"  th:href="@{/css/myform.css}"/>
+    <!-- Datepicker -->
+    <link rel="stylesheet" href="assets/plugin/datepicker/css/bootstrap-datepicker.min.css" th:href="@{/assets/plugin/datepicker/css/bootstrap-datepicker.min.css}">
+        <script th:src="@{'/assets/scripts/html5shiv.min.js'}"></script>
+        <script th:src="@{'/assets/scripts/respond.min.js'}"></script>
+
+  </head>
+  
+  <body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+
+      <!-- Main Header -->
+      <header class="main-header">
+
+        <!-- Logo -->
+        <a href="#" th:href="@{/home}" class="logo">
+          <!-- mini logo for sidebar mini 50x50 pixels -->
+          <span class="logo-mini"><b>JC</b></span>
+          <!-- logo for regular state and mobile devices -->
+          <span class="logo-lg"><b>JCart Admin</b></span>
+        </a>
+
+        <!-- Header Navbar -->
+        <nav class="navbar navbar-static-top" role="navigation">
+
+          <!-- Navbar Right Menu -->
+          <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+              
+              <!-- User Account Menu -->
+              <li class="dropdown user user-menu">
+                <!-- Menu Toggle Button -->
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <!-- The user image in the navbar-->
+                  <img th:src="@{/dist/img/user.png}" class="user-image" alt="User Image"/>
+                  <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                  <!--<span class="hidden-xs" sec:authentication="principal.user.name">User</span>-->
+                </a>
+                <ul class="dropdown-menu">
+                  <!-- The user image in the menu -->
+                  <li class="user-header">
+                    <img th:src="@{/dist/img/user.png}" class="img-circle" alt="User Image"/>
+                    <p>
+                      <!--<span sec:authentication="principal.user.name">User</span>-->
+                    </p>
+                  </li>
+                  
+                  <!-- Menu Footer-->
+                  <li class="user-footer">
+                    <div class="pull-left">
+                      <a href="#" th:href="@{/myAccount}" class="btn btn-default btn-flat">Profile</a>
+                    </div>
+                    <div class="pull-right">
+                      <a href="logout" th:href="@{/logout}" class="btn btn-default btn-flat">Sign out</a>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+              
+            </ul>
+          </div>
+        </nav>
+      </header>
+      <!-- Left side column. contains the logo and sidebar -->
+      <aside class="main-sidebar">
+
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+
+          <!-- Sidebar user panel (optional) -->
+          <div class="user-panel">
+            <div class="pull-left image">
+              <img th:src="@{/dist/img/user.png}" class="img-circle" alt="User Image"/>
+            </div>
+            <div class="pull-left info">
+              <!--<p><span sec:authentication="principal.user.name">User</span></p>-->
+              <!-- Status -->
+              <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+            </div>
+          </div>
+
+          <!-- Sidebar Menu -->
+          <ul class="sidebar-menu">
+            <!-- <li class="header">HEADER</li> -->
+            <!-- Optionally, you can add icons to the links -->
+            <li class="current"><a th:href="@{/admin/dashboard}"><i class="glyphicon glyphicon-home"></i> Dashboard</a></li>
+            <li><a th:href="@{/admin/manageEmployee}"><i class="glyphicon glyphicon-envelope"></i>Manage Employee</a></li>
+            <li><a th:href="@{/admin/manageRole}"><i class="glyphicon glyphicon-folder-open"></i> Manage Role </a></li>
+            <li><a th:href="@{/admin/manageTeam}"><i class="glyphicon glyphicon-question-sign"></i> Manage Team</a></li>
+            <li><a th:href="@{/admin/manageTask}"><i class="glyphicon glyphicon-folder-open"></i> Manage Task </a></li>
+            <li><a th:href="@{/admin/admin/new_author}"><i class="glyphicon glyphicon-folder-open"></i> Assign Task</a></li>
+
+            <li><a href="editors.html"><i class="glyphicon glyphicon-folder-open"></i> View Question</a></li>
+            <li><a th:href="@{/admin/test}"><i class="glyphicon glyphicon-folder-open"></i> Sample Exam</a></li>
+            <li><a href="editors.html"><i class="glyphicon glyphicon-user"></i> Students</a></li>
+            <li><a href="editors.html"><i class="glyphicon glyphicon-folder-open"></i> View Result</a></li>
+            <li><a href="editors.html"><i class="glyphicon glyphicon-plus"></i> Manage User</a></li>
+            <li><a href="editors.html"><i class="glyphicon glyphicon-lock"></i> Change Password</a></li>
+            <li >
+              <a href="#">
+                <i class="glyphicon glyphicon-list"></i> Pages
+                <span class="caret pull-right"></span>
+              </a>
+              <!-- Sub menu -->
+              <ul class="submenu js__content">
+                <li><a href="login.html">Login</a></li>
+                <li><a href="signup.html">Signup</a></li>
+              </ul>
+            </li>
+          </ul><!-- /.sidebar-menu -->
+        </section>
+        <!-- /.sidebar -->
+      </aside>
+
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+
+        <!-- Main content -->
+        <section class="content">
+          <th:block th:include="${template}"/>
+
+        </section><!-- /.content -->
+      </div><!-- /.content-wrapper -->
+
+      <!-- Main Footer -->
+      <footer class="main-footer">
+        <!-- To the right -->
+        <div class="pull-right hidden-xs">
+          <strong><a href="blazonk.com.ng" target="_blank">blazonk.com.ng</a></strong>
+        </div>
+        <!-- Default to the left -->
+        <strong>Copyright &copy; 2019 <a href="blazonk.com.ng">Blazonk Concepts</a>.</strong> All rights reserved.
+      </footer>
+
+      
+    </div><!-- ./wrapper -->
+
+    <!-- REQUIRED JS SCRIPTS -->
+    <script src="assets/scripts/jquery.min.js" th:src="@{/assets/scripts/jquery.min.js}"></script>
+
+    <script src="assets/plugin/bootstrap/js/bootstrap.js" th:src="@{/assets/plugin/bootstrap/js/bootstrap.js}"></script>
+    <script src="dist/js/app.min.js" th:src="@{/dist/js/app.min.js}"></script>
+    <script src="/fontawesome-5.9.0/js/all.js" th:src="@{/fontawesome-5.9.0/js/all.js}"></script>
+    <script src="/fontawesome-5.9.0/js/fontawesome.js" th:src="@{/fontawesome-5.9.0/js/fontawesome.js}"></script>
+
+    <!-- Datepicker -->
+    <script src="assets/plugin/datepicker/js/bootstrap-datepicker.min.js" th:src="@{'/assets/plugin/datepicker/js/bootstrap-datepicker.min.js'}"></script>
+    <script src="../ui/jquery.ui.js" th:src="@{/ui/jquery.ui.js}"></script>
+    <script>
+        $( function() {
+            $( "#dateofbirth" ).datepicker();
+        } );
+    </script>
+    <script>
+        $( function() {
+            $( "#dateemployed" ).datepicker();
+        } );
+    </script>
+    <script>
+        $( function() {
+            $( "#dueDate" ).datepicker();
+        } );
+    </script>
+    <script>
+        function openForm() {
+            document.getElementById("myForm").style.display = "block";
+        }
+
+        function closeForm() {
+            document.getElementById("myForm").style.display = "none";
+        }
+    </script>
+  </body>
+</html>

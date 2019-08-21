@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" th:replace="~{layout/mainLayout :: layout (~{::body},'home')}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="row" th:each="ep:${emp}">
+    <div class="col-md-12">
+        <div class="box box-warning">
+            <div class="box-header with-border">
+                <h3 class="box-title">About</h3>
+            </div><!-- /.box-header -->
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-xs-5"><label>First Name:</label></div>
+                            <!-- /.col-xs-5 -->
+                            <div class="col-xs-7"><span th:text="${ep.getFirstName()}">Betty</span></div>
+                            <!-- /.col-xs-7 -->
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- /.col-md-6 -->
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-xs-5"><label>Surname:</label></div>
+                            <!-- /.col-xs-5 -->
+                            <div class="col-xs-7"><span th:text="${ep.getSurname()}">Betty</span></div>
+                            <!-- /.col-xs-7 -->
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- /.col-md-6 -->
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-xs-5"><label>Other Names:</label></div>
+                            <!-- /.col-xs-5 -->
+                            <div class="col-xs-7"><span th:text="${ep.getOtherName()}">Betty</span></div>
+                            <!-- /.col-xs-7 -->
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- /.col-md-6 -->
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-xs-5"><label>Date Employed:</label></div>
+                            <!-- /.col-xs-5 -->
+                            <div class="col-xs-7"><span th:text="${ep.getDateEmployed()}">Betty</span></div>
+                            <!-- /.col-xs-7 -->
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- /.col-md-6 -->
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-xs-5"><label>Email:</label></div>
+                            <!-- /.col-xs-5 -->
+                            <div class="col-xs-7"><span th:text="${ep.getEmail()}">Betty</span></div>
+                            <!-- /.col-xs-7 -->
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- /.col-md-6 -->
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-xs-5"><label>Employment Status:</label></div>
+                            <!-- /.col-xs-5 -->
+                            <div class="col-xs-7"><span th:text="${ep.getStatus()}">Betty</span></div>
+                            <!-- /.col-xs-7 -->
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- /.col-md-6 -->
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-xs-5"><label>Salary:</label></div>
+                            <!-- /.col-xs-5 -->
+                            <div class="col-xs-7"><span th:text="${ep.getSalary()}">Betty</span></div>
+                            <!-- /.col-xs-7 -->
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- /.col-md-6 -->
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-xs-5"><label>Birthday:</label></div>
+                            <!-- /.col-xs-5 -->
+                            <div class="col-xs-7"><span th:text="${ep.getDateOfBirth()}">Betty</span></div>
+                            <!-- /.col-xs-7 -->
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- /.col-md-6 -->
+
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-xs-5"><label>Address:</label></div>
+                            <!-- /.col-xs-5 -->
+                            <div class="col-xs-7"><span th:text="${ep.getAddress()}">Betty</span></div>
+                            <!-- /.col-xs-7 -->
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- /.col-md-6 -->
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-xs-5"><label>Phone:</label></div>
+                            <!-- /.col-xs-5 -->
+                            <div class="col-xs-7"><span th:text="${ep.getPhone()}">Betty</span></div>
+                            <!-- /.col-xs-7 -->
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- /.col-md-6 -->
+                </div>
+                <!-- /.row -->
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+    </div>
+    </div>
+    <div class="col-md-6 col-xs-12">
+        <div class="box box-warning">
+            <div class="box-header with-border">
+                <h3 class="box-title">Experience</h3>
+            </div><!-- /.box-header -->
+            <div class="box-body">
+                <ul class="dot-list">
+                    <li><a href="#">Owner</a> at <a href="#">NinjaTeam</a>.<span class="date">March 2013 ~ Now</span></li>
+                    <li><a href="#">CEO</a> at <a href="#">CEO Company</a>.<span class="date"> March 2011 ~ February 2013</span></li>
+                    <li><a href="#">Web Designer</a> at <a href="#">Web Design Company Ltd.</a>.<span class="date"> March 2010 ~ February 2011</span></li>
+                    <li><a href="#">Sales</a> at <a href="#">Sales Company Ltd.</a>.<span class="date"> March 2009 ~ February 2010</span></li>
+                </ul>
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+    </div>
+    <div class="col-md-6 col-xs-12">
+        <div class="box box-warning">
+            <div class="box-header with-border">
+                <h3 class="box-title">Education</h3>
+            </div><!-- /.box-header -->
+            <div class="box-body">
+                <ul class="dot-list">
+                    <li><a href="#">Students</a> at <a href="#">CEO Education</a>.<span class="date">March 2013 ~ Now</span></li>
+                    <li><a href="#">Students</a> at <a href="#">Web Design Education</a>.<span class="date">March 2011 ~ February 2013</span></li>
+                    <li><a href="#">Students</a> at <a href="#">Sales School</a>.<span class="date"> March 2010 ~ February 2011</span></li>
+                    <li><a href="#">Students</a> at <a href="#">High School</a>.<span class="date"> March 2009 ~ February 2010</span></li>
+                </ul>
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+    </div>
+</div>
+
+
+
+</body>
+</html>

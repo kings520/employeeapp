@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" th:replace="~{layout/mainLayout :: layout (~{::body},'home')}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/assets/plugin/jquery-ui/jquery.ui.css}"/>
+</head>
+<body>
+<div class="box box-warning">
+    <div class="box-header with-border">
+        <h3 class="box-title">Create New Employee</h3>
+    </div><!-- /.box-header -->
+    <div class="box-body">
+        <form role="form" autocomplete="off" th:object="${employee}" th:action="@{addEmployee}" method="post" class="form-horizontal">
+            <fieldset>
+                <legend>Personel Details</legend>
+                <div class="form-group">
+                    <div class="col-md-4">
+                        <label for="firstName">First Name</label>
+                        <input type="text" class="form-control" id="firstName" placeholder="Enter First Name" name="firstName"/>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="surname">Surame</label>
+                        <input type="text" class="form-control" id="surname" placeholder="Enter Surname" name="surname"/>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="otherName">Other Name</label>
+                        <input type="text" class="form-control" id="otherName" placeholder="Enter Other Names" name="otherName"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-4">
+                        <label for="phone">Phone Number</label>
+                        <input type="text" class="form-control" id="phone" placeholder="Enter Phone Number" name="phone"/>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="email">Email</label>
+                        <input type="text" class="form-control" id="email" placeholder="Enter Email Address" name="email"/>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="dateofbirth">Date Of Birth</label>
+                        <input type="text" class="form-control" autocomplete="false" id="dateofbirth" placeholder="mm/dd/yyyy" name="dateofbirth"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <label for="address">Address</label>
+                        <textarea id="address" name="address" class="form-control"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-4">
+                        <label for="status" >Status</label>
+                        <select class="form-control"  id="status" name="status">
+                            <option>--Select--</option>
+                            <option>Full Time</option>
+                            <option>Part Time</option>
+                            <option>Casual Staff</option>
+                            <option>Trainnee</option>
+                            <option>Corpers</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="dateemployed">Date Of Employed</label>
+                        <input type="text" class="form-control" autocomplete="false" id="dateemployed" placeholder="Enter Date Employed" name="dateemployed"/>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="salary">Salary</label>
+                        <input type="text" class="form-control" id="salary" placeholder="Enter Employee Salary" name="salary"/>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <div>
+                    <legend>Bank Details</legend>
+                    <div class="form-group">
+                        <div class="col-md-4">
+                            <label for="bank">Bank Name</label>
+                            <input type="text" class="form-control"  id="bank" placeholder="Enter Bank Name" name="bank"/>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="accountName">Account Name</label>
+                            <input type="text" class="form-control"  id="accountName" placeholder="Enter Account Name" name="accountName"/>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="accountNumber">Account Number</label>
+                            <input type="text" class="form-control" id="accountNumber" placeholder="Enter Account Number" name="accountNumber"/>
+                        </div>
+                    </div>
+
+                </div>
+            </fieldset>
+            <fieldset>
+                <div>
+                    <legend>Login  Details</legend>
+                    <div class="form-group">
+                        <div class="col-md-4">
+                            <label for="username">User Name</label>
+                            <input type="text" class="form-control"  id="username" placeholder="Enter User Name" name="username"/>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="password">Password</label>
+                            <input type="text" class="form-control"  id="password" placeholder="Enter Password" name="password"/>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="role">Assign A Role</label>
+                            <select class="form-control"  id="role" name="roleName">
+                                <option>--Select--</option>
+                                <option th:each="au1:${rr}"
+                                        th:value="${au1.getId()}"
+                                        th:text="${au1.getName()}">Admin</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+            </fieldset>
+
+            <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div><!-- /.box-body -->
+</div><!-- /.box -->
+
+</body>
+
+</html>
