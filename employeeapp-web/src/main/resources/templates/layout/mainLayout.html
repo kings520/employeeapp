@@ -13,7 +13,10 @@
     <link rel="stylesheet"  th:href="@{/css/myform.css}"/>
     <!-- Datepicker -->
     <link rel="stylesheet" href="assets/plugin/datepicker/css/bootstrap-datepicker.min.css" th:href="@{/assets/plugin/datepicker/css/bootstrap-datepicker.min.css}">
-        <script th:src="@{'/assets/scripts/html5shiv.min.js'}"></script>
+    <!-- Remodal -->
+    <link rel="stylesheet" href="assets/plugin/modal/remodal/remodal.css"  th:href="@{/assets/plugin/modal/remodal/remodal.css}">
+    <link rel="stylesheet" href="assets/plugin/modal/remodal/remodal-default-theme.css" th:href="@{/assets/plugin/modal/remodal/remodal-default-theme.css}">
+    <script th:src="@{'/assets/scripts/html5shiv.min.js'}"></script>
         <script th:src="@{'/assets/scripts/respond.min.js'}"></script>
 
   </head>
@@ -155,7 +158,8 @@
     <script src="dist/js/app.min.js" th:src="@{/dist/js/app.min.js}"></script>
     <script src="/fontawesome-5.9.0/js/all.js" th:src="@{/fontawesome-5.9.0/js/all.js}"></script>
     <script src="/fontawesome-5.9.0/js/fontawesome.js" th:src="@{/fontawesome-5.9.0/js/fontawesome.js}"></script>
-
+    <!-- Remodal -->
+    <script src="assets/plugin/modal/remodal/remodal.min.js" th:src="@{/assets/plugin/modal/remodal/remodal.min.js}"></script>
     <!-- Datepicker -->
     <script src="assets/plugin/datepicker/js/bootstrap-datepicker.min.js" th:src="@{'/assets/plugin/datepicker/js/bootstrap-datepicker.min.js'}"></script>
     <script src="../ui/jquery.ui.js" th:src="@{/ui/jquery.ui.js}"></script>
@@ -172,6 +176,9 @@
     <script>
         $( function() {
             $( "#dueDate" ).datepicker();
+        } );
+        $( function() {
+            $( "#startDate" ).datepicker();
         } );
     </script>
     <script>

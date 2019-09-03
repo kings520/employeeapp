@@ -1,35 +1,30 @@
 package com.employeeapp.bootstrap;
 
 import com.employeeapp.model.Role;
-import com.employeeapp.model.TeamName;
 import com.employeeapp.service.RoleService;
-import com.employeeapp.service.TeamNameService;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.stereotype.Component;
-
-import java.util.Date;
 
 //@Component
 public class DataLoader implements CommandLineRunner {
-    private final TeamNameService teamNameService;
+   // private final TeamNameService teamNameService;
     private final RoleService roleService;
 
-    public DataLoader(TeamNameService teamNameService, RoleService roleService) {
-        this.teamNameService = teamNameService;
+    public DataLoader( RoleService roleService) {
+        //this.teamNameService = teamNameService;
         this.roleService = roleService;
     }
 
     @Override
     public void run(String... args) throws Exception {
-        TeamName t1 = new TeamName();
-        t1.setName("Team A");
-        t1.setDateAdded(new Date());
-        teamNameService.save(t1);
-
-        TeamName t2 = new TeamName();
-        t2.setName("Team B");
-        t2.setDateAdded(new Date());
-        teamNameService.save(t2);
+//        TeamName t1 = new TeamName();
+//        t1.setName("Team A");
+//        t1.setDateAdded(new Date());
+//        teamNameService.save(t1);
+//
+//        TeamName t2 = new TeamName();
+//        t2.setName("Team B");
+//        t2.setDateAdded(new Date());
+//        teamNameService.save(t2);
 
         Role role1 = new Role();
         role1.setName("Admin");

@@ -3,7 +3,6 @@ package com.employeeapp.model;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "employee")
@@ -68,6 +67,9 @@ public class Employee extends BaseEntity {
 
     @ManyToMany(mappedBy = "employee")
     private List<Team> team;
+
+//    @OneToOne(mappedBy = "employee")
+//    private Task task;
 
     public Employee() {
     }
@@ -231,4 +233,12 @@ public class Employee extends BaseEntity {
     public void setTeam(List<Team> team) {
         this.team = team;
     }
+
+//    public Task getTask() {
+//        return task;
+//    }
+//
+//    public void setTask(Task task) {
+//        this.task = task;
+//    }
 }

@@ -1,10 +1,139 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" th:replace="~{layout/mainLayout :: layout (~{::body},'home')}">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+<div class="box box-warning">
+    <div class="box-header with-border">
+        <h3 class="box-title">Assign Teams</h3>
+    </div>
+    <div class="box-body">
+        <div class="small-spacing">
+            <div class="col-lg-6 col-xs-12">
+                <div class="box-content card white">
+                    <h4 class="box-title">NEW TASK</h4>
+                    <!-- /.box-title -->
+                    <div class="card-content">
+                        <form th:object="${task}" th:action="@{/admin/addTask}" method="post">
+                            <div class="form-group">
+                                <!--<label for="title">Title</label>-->
+                                <input type="text" class="form-control" id="title" placeholder="Enter Title" name="title"/>
+                            </div>
+                            <div class="form-group">
+                                <!--<label for="description">Description</label>-->
+                                <textarea id="description" rows="6" name="description" placeholder="Enter Description" class="form-control"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="startDate">Start Date</label>
+                                        <input type="text" class="form-control"  id="startDate" placeholder="Enter Start Date" name="startDate"/>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="dueDate">End Date</label>
+                                        <input type="text" class="form-control"  id="dueDate" placeholder="Enter End Date" name="dueDate"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="status">Status</label>
+                                        <select class="form-control"  id="status" name="status" >
+                                            <option>--Select--</option>
+                                            <option th:each="trole1:${T(com.employeeapp.model.Status).values()}"
+                                                    th:value="${trole1.name()}"
+                                                    th:text="${trole1.name()}">Priority</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="priority">Priority</label>
+                                        <select class="form-control"  id="priority" name="priority" >
+                                            <option>--Select--</option>
+                                            <option th:each="trole:${T(com.employeeapp.model.Priority).values()}"
+                                                    th:value="${trole.name()}"
+                                                    th:text="${trole.name()}">Priority</option>
+                                        </select>
 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-sm-offset-5 col-sm-12">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.card-content -->
+                </div>
+                <!-- /.box-content -->
+            </div>
+            <!-- /.col-lg-6 col-xs-12 -->
+
+            <div class="col-lg-6 col-xs-12">
+                <div class="box-content card white">
+                    <h4 class="box-title">Assigned To: </h4>
+                    <!-- /.box-title -->
+                    <div class="card-content">
+                        <form role="form" th:action="@{/admin/assignTeam}" th:object="${task}" method="post">
+
+                            <!--<input type="hidden" name="id" th:field="*{id}" />-->
+                            <div class="form-group">
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <label >Select Team Lead</label>
+                                <table class="table table-responsive no-padding">
+                                    <tr>
+                                        <th>NAME</th>
+                                        <th>STATUS</th>
+                                    </tr>
+                                    <tr th:each="employee : ${emp}">
+                                        <td>
+                                            <input type="radio" id="employee" name="teamLead" th:value="${employee.id}" />
+                                            <label for="employee" th:text="${employee.id+' '+employee.surname+' '+employee.firstName+' '+ employee.otherName}">Employee</label>
+                                        </td>
+                                        <td th:each="au2:${employee.role}" th:text="${au2.name}">hhj</td>
+                                    </tr>
+                                </table>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+
+                                <table class="table table-responsive-sm no-padding">
+
+                                    <tr>
+                                        <td>
+                                            <label for="employee2" >Employee List</label>
+                                            <select class="form-control show-tick"  id="employee2" name="employee2" multiple="multiple">
+                                                <!--<option>&#45;&#45;Select&#45;&#45;</option>-->
+                                                <option th:each="employee2 : ${emp2}"
+                                                        th:value="${employee2.id}"
+                                                        th:text="${employee2.surname+' '+employee2.firstName+' '+ employee2.otherName}">Priority</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+
+
+                        </form>
+                    </div>
+                    <!-- /.card-content -->
+                </div>
+                <!-- /.box-content -->
+            </div>
+            <!-- /.col-lg-6 col-xs-12 -->
+        </div>
+        <!-- /.row -->
+    </div><!-- /.box-body -->
+
+</div><!-- /.box -->
 </body>
 </html>

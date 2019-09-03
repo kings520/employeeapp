@@ -13,8 +13,8 @@
                 <div class="box-tools">
                     <div style="width: 400px;">
                         <a th:href="@{formEmployee}" class="btn btn-primary"><i class="fas fa-trash ml-2"></i>Delete</a>
-                        <a th:href="@{formEmployee}" class="btn btn-primary"><i class="fas fa-check"></i>Completed</a>
-                        <button type="button" class="btn btn-primary" onclick="openForm()"><i class="fas fa-plus"></i>Add New Task</button>
+                        <a th:href="@{/admin/newTask}" class="btn btn-primary" title="Completed Task"><i class="fas fa-check"></i>Completed</a>
+                        <button type="button" data-remodal-target="remodal" class="btn btn-primary waves-effect waves-light"><i class="fas fa-plus"></i>Add New Task</button>
                     </div>
                 </div>
             </div><!-- /.box-header -->
@@ -23,12 +23,13 @@
                     <tr th:each="au,iterStat : ${task}">
                         <td style="width: 10px"><span th:text="${iterStat.count}">1</span></td>
                         <td th:text="${au.title}">Trident</td>
-                        <td th:text="${au.dueDate}">Internet Explorer 4.0</td>
-                        <td th:text="${au.createdDate}">Win 95+</td>
+                        <td th:text="${#dates.format(au.dueDate,'dd MMMM yyyy')}">Internet Explorer 4.0</td>
+                        <td th:text="${#calendars.format(au.createdDate,'dd MMMM yyyy')}">Win 95+</td>
                         <td>
                             <a th:href="@{'/admin/editEmployee/'+${au.id}}" class="btn btn-primary"><i class="fas  fa-folder-open ml-2"></i></a>
                             <a th:href="@{'/admin/editEmployee/'+${au.id}}" class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a>
                             <a th:href="@{/admin/deleteEmployee/{id}(id=${au.id})}" class="btn btn-primary"><i class="fas fa-user-times ml-2"></i></a>
+                            <a th:href="@{/admin/assignTeam/{id}(id=${au.id})}" title="Assign Team to Task" class="btn btn-primary"><i class="fas fa-users ml-2"></i></a>
                         </td>
                     </tr>
 
@@ -39,43 +40,65 @@
     </div>
 </div>
 <!-- Modal -->
-<div class="form-popup" id="myForm">
-    <form th:object="${task}" th:action="@{/addRole}" method="post" class="form-container">
-        <div class="form-group">
-            <label for="title">Title</label>
-            <input type="text" class="form-control" id="title" placeholder="Enter Title" name="title"/>
-        </div>
-        <div class="form-group">
-            <label for="description">Description</label>
-            <textarea id="description" name="description" class="form-control"></textarea>
-        </div>
-        <div class="form-group">
-            <div class="row">
-                <div class="col-md-6">
-                    <label for="role">Assign To</label>
-                    <select class="form-control"  id="role" name="roleb" >
-                        <option>--Select--</option>
-                        <option th:each="au : ${role}"
-                                th:value="${au.getId()}"
-                                th:text="${au.getName()}">
-                    </select>
-                </div>
-                <div class="col-md-6">
-                    <label for="dueDate">Due Date</label>
-                    <input type="text" class="form-control"  id="dueDate" placeholder="Enter Due Date" name="dueDate"/>
+<div class="remodal" data-remodal-id="remodal" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
+    <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
+    <div class="remodal-content">
+        <h2 class="box-title">Remodal</h2>
+        <form th:object="${task}" th:action="@{/admin/addTask}" method="post">
+            <div class="form-group">
+                <!--<label for="title">Title</label>-->
+                <input type="text" class="form-control" id="title" placeholder="Enter Title" name="title"/>
+            </div>
+            <div class="form-group">
+                <!--<label for="description">Description</label>-->
+                <textarea id="description" rows="6" name="description" placeholder="Enter Description" class="form-control"></textarea>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="startDate">Start Date</label>
+                        <input type="text" class="form-control"  id="startDate" placeholder="Enter Start Date" name="startDate"/>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="dueDate">End Date</label>
+                        <input type="text" class="form-control"  id="dueDate" placeholder="Enter End Date" name="dueDate"/>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="form-group">
-            <div class="row">
-                <div class="col-sm-offset-5 col-sm-12">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                    <button type="submit" class="btn cancel" onclick="closeForm()">Cancel</button>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="status">Status</label>
+                        <select class="form-control"  id="status" name="status" >
+                            <option>--Select--</option>
+                            <option th:each="trole1:${T(com.employeeapp.model.Status).values()}"
+                                    th:value="${trole1.name()}"
+                                    th:text="${trole1.name()}">Priority</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="priority">Priority</label>
+                        <select class="form-control"  id="priority" name="priority" >
+                            <option>--Select--</option>
+                            <option th:each="trole:${T(com.employeeapp.model.Priority).values()}"
+                                    th:value="${trole.name()}"
+                                    th:text="${trole.name()}">Priority</option>
+                        </select>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-offset-5 col-sm-12">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button data-remodal-action="cancel" class="btn cancel">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
 
-                </div>
-            </div>
-        </div>
-    </form>
 </div>
 <!--end  Modal-->
 </body>

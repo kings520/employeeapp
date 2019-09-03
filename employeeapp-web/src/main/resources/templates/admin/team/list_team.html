@@ -36,6 +36,19 @@
                     </tr>
 
                 </table>
+                <table class="table table-hover">
+                    <tr>
+                        <th style="width: 10px">#</th>
+                        <th>Employee Name</th>
+
+                    </tr>
+                    <tr th:each="ep,iterStat : ${emp}">
+                        <td ><span th:text="${iterStat.count}">1</span></td>
+                        <td th:text="${ep.firstName}">Trident</td>
+
+                    </tr>
+
+                </table>
             </div><!-- /.box-body -->
 
         </div><!-- /.box -->

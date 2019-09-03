@@ -25,7 +25,7 @@ hr{
 }
 
 label{
-    margin-bottom: 15px;
+    margin-bottom: 5px;
 }
 
 input,
@@ -126,7 +126,6 @@ span.input-group-addon i {
 
 /* Add styles to the form container */
 .form-container {
-    max-width: 300px;
     padding: 10px;
     background-color: white;
 }
@@ -452,3 +451,57 @@ span.input-group-addon i {
                           color: #939ba2;
                           display: block;
                       }
+
+                      a.tooltip{
+                          position:relative;
+                      }
+                      a.tooltip:hover{
+                          text-decoration:none;
+                      }
+                      a.tooltip:after{
+                          content: attr(tip);
+                          font-family:Arial, Helvetica, sans-serif;
+                          font-size:90%;
+                          line-height:1.2em;
+                          color:#fff;
+                          width:200px;
+                          padding:5px 10px;
+                          -moz-border-radius:6px;
+                          -webkit-border-radius:6px;
+                          border-radius:6px;
+                          background:#c00d3f;
+                          background:-webkit-linear-gradient(#c00d3f, #7b0a2a);
+                          background:-moz-linear-gradient(#c00d3f, #7b0a2a);
+                          background:-o-linear-gradient(#c00d3f, #7b0a2a);
+                          background:-ms-linear-gradient(#c00d3f, #7b0a2a);
+                          background:linear-gradient(#c00d3f, #7b0a2a);
+                          -moz-box-shadow: 3px 3px 4px rgba(0,0,0, .65);
+                          -webkit-box-shadow: 3px 3px 4px rgba(0,0,0, .65);
+                          box-shadow: 3px 3px 4px rgba(0,0,0, .65);
+                          position:absolute;
+                          top:27px;
+                          left:-10px;
+                          display:none;
+                      }
+                      a.tooltip:before{
+                          z-index:1000;
+                          position:absolute;
+                          content:"";
+                          top:15px;
+                          left:0px;
+                          border-right:7px transparent solid;
+                          border-left:7px transparent solid;
+                          display:none;
+                      }
+                      a.tooltip:hover{
+                          z-index:1000;
+                          position:relative;
+                          color:#8325f7;
+                      }
+                      a.tooltip:hover:after{
+                          display:block;
+                      }
+                      a.tooltip:hover:before{
+                          display:block;
+                      }
+

@@ -12,14 +12,20 @@
     <!-- Modal -->
     <div class="box-body">
         <form role="form" th:action="@{/admin/addTeam}" method="post">
-            <div class="form-group">
-                <label for="title">Team Name</label>
-                <select id="title" class="form-control" name="teamName">
-                    <option>--Select--</option>
-                    <option th:each="tname:${teamName}"
-                            th:value="${tname.getId()}"
-                            th:text="${tname.getName()}">Team Name</option>
-                </select>
+            <div class="col-md-12">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="title">Team Name</label>
+                        <select id="title" class="form-control" name="task">
+                            <option>--Select--</option>
+                            <option th:each="tname:${task}"
+                                    th:value="${tname.getId()}"
+                                    th:text="${tname.getTitle()}">Task Title</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                </div>
             </div>
             <div class="form-group">
                 <label >Employee List</label>
@@ -63,4 +69,26 @@
 </div>
 
 </body>
+<!--<script>-->
+    <!--$('.drop-down').on('change', function() {-->
+        <!--var name = $('.drop-down option:selected').val();-->
+
+        <!--$.ajax({-->
+            <!--type: 'get',-->
+            <!--url: @{'/url'},-->
+            <!--data:  {name:name},-->
+            <!--success: function(returnedData){-->
+                <!--console.log(returnedData);-->
+                <!--$('.details').html(returnedData);-->
+
+            <!--},-->
+
+            <!--error: function(xhr, exception) {-->
+                <!--console.log(xhr);-->
+                <!--alert("error");-->
+            <!--}-->
+        <!--});-->
+
+    <!--});-->
+<!--</script>-->
 </html>

@@ -11,17 +11,31 @@ public class Task extends BaseEntity {
     private String title;
 
     @Column(name = "description")
+    @Lob
     private String description;
 
     @Column(name = "dateCreated")
     private Date createdDate;
 
-    @Column(name = "dueDate")
+    @Column(name = "endDate")
     private Date dueDate;
-    //system only feteech names of managers
-    //@Column(name = "Assign To")
-   // private Employee employee;
 
+    @Column(name = "startDate")
+    private Date startDate;
+    //system only feteech names of managers
+
+    @Column(name = "status")
+    private String status;
+
+    @Column(name = "priority")
+    private String priority;
+
+//    @OneToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "emp_id",referencedColumnName = "id")
+//    private Employee employee;
+
+    @OneToOne(mappedBy = "task")
+    private Team team;
 
     public String getTitle() {
         return title;
@@ -53,5 +67,45 @@ public class Task extends BaseEntity {
 
     public void setDueDate(Date dueDate) {
         this.dueDate = dueDate;
+    }
+
+//    public Employee getEmployee() {
+//        return employee;
+//    }
+//
+//    public void setEmployee(Employee employee) {
+//        this.employee = employee;
+//    }
+
+    public Team getTeam() {
+        return team;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getPriority() {
+        return priority;
+    }
+
+    public void setPriority(String priority) {
+        this.priority = priority;
     }
 }

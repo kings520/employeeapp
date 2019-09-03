@@ -3,25 +3,21 @@ package com.employeeapp.model;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "team")
 public class Team extends BaseEntity {
-    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinTable(name = "employee_team",joinColumns = {@JoinColumn(name = "team_id")},inverseJoinColumns = {@JoinColumn(name = "emp_id")})
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "team_employee",joinColumns = {@JoinColumn(name = "emp_id")},inverseJoinColumns = @JoinColumn(name = "task_id"))
     private List<Employee> employee;
-
-    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinColumn(name = "team_name_id")
-    private TeamName teamName;
-
-    @Enumerated(value = EnumType.STRING)
-    @Column(name = "team_role")
-    private  TeamRole teamRole;
 
     @Column(name = "date_added")
     private Date date;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="task_id",referencedColumnName = "id")
+    private Task task;
 
     public List<Employee> getEmployee() {
         return employee;
@@ -31,20 +27,12 @@ public class Team extends BaseEntity {
         this.employee = employee;
     }
 
-    public TeamName getTeamName() {
-        return teamName;
+    public Task getTask() {
+        return task;
     }
 
-    public void setTeamName(TeamName teamName) {
-        this.teamName = teamName;
-    }
-
-    public TeamRole getTeamRole() {
-        return teamRole;
-    }
-
-    public void setTeamRole(TeamRole teamRole) {
-        this.teamRole = teamRole;
+    public void setTask(Task task) {
+        this.task = task;
     }
 
     public Date getDate() {
