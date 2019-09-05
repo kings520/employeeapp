@@ -1,13 +1,12 @@
 package com.employeeapp.service;
 
+import com.employeeapp.model.Employee;
 import com.employeeapp.model.Task;
 import com.employeeapp.repository.TaskRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 @Service
 public class TaskServiceImpl implements TaskService {
     private final TaskRepository taskRepository;
@@ -41,5 +40,10 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public void deleteById(Long aLong) {
         taskRepository.deleteById(aLong);
+    }
+
+    @Override
+    public Task findByTeamLead(Employee employee) {
+        return taskRepository.findByTeamLead(employee);
     }
 }

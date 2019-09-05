@@ -65,11 +65,11 @@ public class Employee extends BaseEntity {
     @Column(name = "active")
     private int active;
 
-    @ManyToMany(mappedBy = "employee")
-    private List<Team> team;
+//    @ManyToMany(mappedBy = "employee")
+//    private List<Team> team;
 
-//    @OneToOne(mappedBy = "employee")
-//    private Task task;
+    @OneToOne(mappedBy = "teamLead")
+    private Task task;
 
     public Employee() {
     }
@@ -178,14 +178,6 @@ public class Employee extends BaseEntity {
         DateEmployed = dateEmployed;
     }
 
-//    public User getUser() {
-////        return user;
-////    }
-////
-////    public void setUser(User user) {
-////        this.user = user;
-////    }
-
     public String getUsername() {
         return username;
     }
@@ -226,19 +218,19 @@ public class Employee extends BaseEntity {
         this.active = active;
     }
 
-    public List<Team> getTeam() {
-        return team;
-    }
-
-    public void setTeam(List<Team> team) {
-        this.team = team;
-    }
-
-//    public Task getTask() {
-//        return task;
+//    public List<Team> getTeam() {
+//        return team;
 //    }
 //
-//    public void setTask(Task task) {
-//        this.task = task;
+//    public void setTeam(List<Team> team) {
+//        this.team = team;
 //    }
+
+    public Task getTask() {
+        return task;
+    }
+
+    public void setTask(Task task) {
+        this.task = task;
+    }
 }

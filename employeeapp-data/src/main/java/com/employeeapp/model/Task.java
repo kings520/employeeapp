@@ -2,6 +2,7 @@ package com.employeeapp.model;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "task")
@@ -30,12 +31,13 @@ public class Task extends BaseEntity {
     @Column(name = "priority")
     private String priority;
 
-//    @OneToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "emp_id",referencedColumnName = "id")
-//    private Employee employee;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "teamLead_id",referencedColumnName = "id")
+    private Employee teamLead;
 
-    @OneToOne(mappedBy = "task")
-    private Team team;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "task_team",joinColumns = @JoinColumn(name = "task_id"),inverseJoinColumns = @JoinColumn(name = "emp_id"))
+    private List<Employee> employees;
 
     public String getTitle() {
         return title;
@@ -69,6 +71,13 @@ public class Task extends BaseEntity {
         this.dueDate = dueDate;
     }
 
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
+    }
 //    public Employee getEmployee() {
 //        return employee;
 //    }
@@ -77,13 +86,14 @@ public class Task extends BaseEntity {
 //        this.employee = employee;
 //    }
 
-    public Team getTeam() {
-        return team;
+    public Employee getTeamLead() {
+        return teamLead;
     }
 
-    public void setTeam(Team team) {
-        this.team = team;
+    public void setTeamLead(Employee teamLead) {
+        this.teamLead = teamLead;
     }
+
 
     public Date getStartDate() {
         return startDate;

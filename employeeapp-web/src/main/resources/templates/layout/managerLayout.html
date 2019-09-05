@@ -11,8 +11,12 @@
         <link  href="/fontawesome-5.9.0/css/all.css" th:href="@{/font-awesome-5.9.0/css/all.css}" rel="stylesheet" />
         <link  href="/fontawesome-5.9.0/css/fontawesome.css" th:href="@{/font-awesome-5.9.0/css/fontawesome.css}" rel="stylesheet" />
         <link rel="stylesheet"  th:href="@{/css/myform.css}"/>
+        <!--<link rel="stylesheet" href="assets/styles/style.min.css" th:href="@{/assets/styles/style.min.css}">-->
         <!-- Datepicker -->
         <link rel="stylesheet" href="assets/plugin/datepicker/css/bootstrap-datepicker.min.css" th:href="@{/assets/plugin/datepicker/css/bootstrap-datepicker.min.css}">
+        <!-- Remodal -->
+        <link rel="stylesheet" href="assets/plugin/modal/remodal/remodal.css"  th:href="@{/assets/plugin/modal/remodal/remodal.css}">
+        <link rel="stylesheet" href="assets/plugin/modal/remodal/remodal-default-theme.css" th:href="@{/assets/plugin/modal/remodal/remodal-default-theme.css}">
         <script th:src="@{'/assets/scripts/html5shiv.min.js'}"></script>
         <script th:src="@{'/assets/scripts/respond.min.js'}"></script>
 
@@ -95,30 +99,14 @@
                     <ul class="sidebar-menu">
                         <!-- <li class="header">HEADER</li> -->
                         <!-- Optionally, you can add icons to the links -->
-                        <li class="current"><a th:href="@{/admin/dashboard}"><i class="glyphicon glyphicon-home"></i> Dashboard</a></li>
-                        <li><a th:href="@{/admin/manageEmployee}"><i class="glyphicon glyphicon-envelope"></i>Manage Project</a></li>
-                        <li><a th:href="@{/admin/manageRole}"><i class="glyphicon glyphicon-folder-open"></i> Manage Role </a></li>
-                        <li><a th:href="@{/admin/manageTeam}"><i class="glyphicon glyphicon-question-sign"></i> Manage Team</a></li>
-                        <li><a th:href="@{/admin/manageTask}"><i class="glyphicon glyphicon-folder-open"></i> Manage Task </a></li>
-                        <li><a th:href="@{/admin/admin/new_author}"><i class="glyphicon glyphicon-folder-open"></i> Assign Task</a></li>
-
-                        <li><a href="editors.html"><i class="glyphicon glyphicon-folder-open"></i> View Question</a></li>
-                        <li><a th:href="@{/admin/test}"><i class="glyphicon glyphicon-folder-open"></i> Sample Exam</a></li>
-                        <li><a href="editors.html"><i class="glyphicon glyphicon-user"></i> Students</a></li>
-                        <li><a href="editors.html"><i class="glyphicon glyphicon-folder-open"></i> View Result</a></li>
+                        <li class="current"><a th:href="@{/manager/dashboard}"><i class="glyphicon glyphicon-home"></i> Dashboard</a></li>
+                        <!--<li><a th:href="@{/admin/manageTeam}"><i class="glyphicon glyphicon-question-sign"></i> Manage Team</a></li>-->
+                        <li><a th:href="@{/manager/myTask}"><i class="glyphicon glyphicon-tasks"></i> My Task </a></li>
+                        <li><a th:href="@{/manager/manageEmployee}"><i class="glyphicon glyphicon-envelope"></i>Manage Employee</a></li>
                         <li><a href="editors.html"><i class="glyphicon glyphicon-plus"></i> Manage User</a></li>
                         <li><a href="editors.html"><i class="glyphicon glyphicon-lock"></i> Change Password</a></li>
-                        <li >
-                            <a href="#">
-                                <i class="glyphicon glyphicon-list"></i> Pages
-                                <span class="caret pull-right"></span>
-                            </a>
-                            <!-- Sub menu -->
-                            <ul class="submenu js__content">
-                                <li><a href="login.html">Login</a></li>
-                                <li><a href="signup.html">Signup</a></li>
-                            </ul>
-                        </li>
+                        <li><a href="editors.html"><i class="glyphicon glyphicon-plus"></i> Logout</a></li>
+
                     </ul><!-- /.sidebar-menu -->
                 </section>
                 <!-- /.sidebar -->
@@ -155,7 +143,8 @@
         <script src="dist/js/app.min.js" th:src="@{/dist/js/app.min.js}"></script>
         <script src="/fontawesome-5.9.0/js/all.js" th:src="@{/fontawesome-5.9.0/js/all.js}"></script>
         <script src="/fontawesome-5.9.0/js/fontawesome.js" th:src="@{/fontawesome-5.9.0/js/fontawesome.js}"></script>
-
+        <!-- Remodal -->
+        <script src="assets/plugin/modal/remodal/remodal.min.js" th:src="@{/assets/plugin/modal/remodal/remodal.min.js}"></script>
         <!-- Datepicker -->
         <script src="assets/plugin/datepicker/js/bootstrap-datepicker.min.js" th:src="@{'/assets/plugin/datepicker/js/bootstrap-datepicker.min.js'}"></script>
         <script src="../ui/jquery.ui.js" th:src="@{/ui/jquery.ui.js}"></script>
@@ -172,6 +161,9 @@
         <script>
             $( function() {
                 $( "#dueDate" ).datepicker();
+            } );
+            $( function() {
+                $( "#startDate" ).datepicker();
             } );
         </script>
         <script>

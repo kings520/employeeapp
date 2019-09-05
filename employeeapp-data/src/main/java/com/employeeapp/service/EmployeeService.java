@@ -10,4 +10,5 @@ public interface EmployeeService extends CrudService<Employee,Long> {
    // List<Employee> getEmployeeByRole(Role role);
 
     List<Employee> getEmployeeByRole(Role role);
+    Long countEmployee();
 }

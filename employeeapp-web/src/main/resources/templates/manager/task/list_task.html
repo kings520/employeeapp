@@ -37,9 +37,9 @@
                         <td th:text="${#calendars.format(au.createdDate,'dd MMMM yyyy')}">Win 95+</td>
                         <td ><span class="label label-success" th:text="${au.status}">New</span></td>
                         <td>
-                            <a th:href="@{'/admin/viewTask/'+${au.id}}" title="Task Details" class="btn btn-primary"><i class="fas  fa-folder-open ml-2"></i></a>
-                            <a th:href="@{/admin/deleteTask/{id}(id=${au.id})}" title="Delete Task" class="btn btn-primary"><i class="fas fa-trash ml-2"></i></a>
-                            <a th:href="@{/admin/viewTeam/{id}(id=${au.id})}" title="View Team" class="btn btn-primary"><i class="fas fa-users ml-2"></i></a>
+                            <a th:href="@{'/manager/viewTask/'+${au.id}}" title="Task Details" class="btn btn-primary"><i class="fas  fa-folder-open ml-2"></i></a>
+                            <a th:href="@{/manager/deleteTask/{id}(id=${au.id})}" title="Delete Task" class="btn btn-primary"><i class="fas fa-trash ml-2"></i></a>
+                            <a th:href="@{/manager/viewTeam/{id}(id=${au.id})}" title="View Team" class="btn btn-primary"><i class="fas fa-users ml-2"></i></a>
                         </td>
                     </tr>
                     </tbody>

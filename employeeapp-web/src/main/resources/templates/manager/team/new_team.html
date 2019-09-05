@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" th:replace="~{layout/mainLayout :: layout (~{::body},'home')}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="box box-warning">
+    <div class="box-header with-border">
+        <h3 class="box-title">Create New Team</h3>
+    </div><!-- /.box-header -->
+    <!-- Modal -->
+    <div class="box-body">
+        <form role="form" th:action="@{/admin/addTeam}" method="post">
+            <div class="col-md-12">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="title">Team Name</label>
+                        <select id="title" class="form-control" name="task">
+                            <option>--Select--</option>
+                            <option th:each="tname:${task}"
+                                    th:value="${tname.getId()}"
+                                    th:text="${tname.getTitle()}">Task Title</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                </div>
+            </div>
+            <div class="form-group">
+                <label >Employee List</label>
+                <table class="table table-responsive no-padding">
+                    <tr>
+                        <th>NAME</th>
+                        <th>USER NAME</th>
+                        <th>ASSIGN TEAM LEADER</th>
+                    </tr>
+                    <tr th:each="employee : ${emp}">
+                        <td>
+                            <input type="checkbox" id="employee" name="employee" th:value="${employee.id}" />
+                            <label th:text="${employee.surname+' '+employee.firstName+' '+ employee.otherName}">Employee</label>
+                        </td>
+                        <td th:each="au2:${employee.role}" th:text="${au2.name}">hhj</td>
+                        <td>
+                            <select class="form-control" name="teamRole">
+                                <option>--Select--</option>
+                                <option th:each="trole:${T(com.employeeapp.model.TeamRole).values()}"
+                                        th:value="${trole.name()}"
+                                        th:text="${trole.name()}">Team Role</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <!--<tr th:each="user:${users}">-->
+                    <!--<td>-->
+                    <!--<input type="checkbox" id="user" name="user" th:value="${user.id}" />-->
+                    <!--<label th:text="${user.employee.surname+' '+user.employee.firstName+' '+ user.employee.otherName}">Employee</label>-->
+                    <!--</td>-->
+                    <!--<td th:text="${user.role}">hhj</td>-->
+                    <!--</tr>-->
+                </table>
+            </div>
+
+            <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+    <!--end  Modal-->
+</div>
+
+</body>
+<!--<script>-->
+    <!--$('.drop-down').on('change', function() {-->
+        <!--var name = $('.drop-down option:selected').val();-->
+
+        <!--$.ajax({-->
+            <!--type: 'get',-->
+            <!--url: @{'/url'},-->
+            <!--data:  {name:name},-->
+            <!--success: function(returnedData){-->
+                <!--console.log(returnedData);-->
+                <!--$('.details').html(returnedData);-->
+
+            <!--},-->
+
+            <!--error: function(xhr, exception) {-->
+                <!--console.log(xhr);-->
+                <!--alert("error");-->
+            <!--}-->
+        <!--});-->
+
+    <!--});-->
+<!--</script>-->
+</html>

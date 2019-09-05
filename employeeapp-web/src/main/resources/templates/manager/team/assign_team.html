@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" th:replace="~{layout/mainLayout :: layout (~{::body},'home')}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="box box-warning">
+    <div class="box-header with-border">
+        <h3 class="box-title">Assign Teams</h3>
+    </div><!-- /.box-header -->
+    <!-- Modal -->
+    <div class="box-body">
+        <form role="form" th:action="@{/admin/assignTeam}" th:object="${task}" method="post">
+        <table class="table table-hover">
+            <tbody th:each="au : ${task}">
+            <tr >
+                <td style="color: #0000ff;">Task ID:</td>
+                <td th:text="${au.id}">
+                    <input type="hidden" name="id" th:field="*{id}" th:value="${au.id}" />
+                    Internet Explorer 4.0</td>
+                <td style="color: #0000ff;">Task Title:</td>
+                <td th:text="${au.title}">Internet Explorer 4.0</td>
+            </tr>
+            <tr>
+                <td style="color: #0000ff;">Start Date:</td>
+                <td th:text="${#dates.format(au.startDate, 'dd-MMM-yyyy')}"></td>
+                <td style="color: #0000ff;">End Date:</td>
+                <td th:text="${#dates.format(au.dueDate, 'dd-MMM-yyyy')}"></td>
+            </tr>
+            </tbody>
+        </table>
+
+            <!--<input type="hidden" name="id" th:field="*{id}" />-->
+            <div class="form-group">
+                <p></p>
+                <p></p>
+                <p></p>
+                <p></p>
+                <label >Select Team Lead</label>
+                <table class="table table-responsive no-padding">
+                    <tr>
+                        <th>NAME</th>
+                        <th>ROLE</th>
+                    </tr>
+                    <tr th:each="employee : ${emp}">
+                        <td>
+                            <input type="radio" id="employee" name="teamLead" th:value="${employee.id}" />
+                            <label for="employee" th:text="${employee.id+' '+employee.surname+' '+employee.firstName+' '+ employee.otherName}">Employee</label>
+                        </td>
+                        <td th:each="au2:${employee.role}" th:text="${au2.name}">hhj</td>
+                    </tr>
+                </table>
+                <p></p>
+                <p></p>
+                <p></p>
+                <label >Select Team </label>
+                <table class="table table-responsive-sm no-padding">
+                    <tr>
+                        <th>NAME</th>
+                        <th>ROLE</th>
+                    </tr>
+                    <tr th:each="employee2 : ${emp2}">
+                        <td>
+                            <input type="checkbox" id="employee2" name="temployee" th:value="${employee2.id}" />
+                            <label for="employee2" th:text="${employee2.surname+' '+employee2.firstName+' '+ employee2.otherName}">Employee</label>
+                        </td>
+                        <td th:each="au22:${employee2.role}" th:text="${au22.name}">hhj</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Assign</button>
+            </div>
+        </form>
+    </div>
+    <!--end  Modal-->
+</div>
+</body>
+</html>

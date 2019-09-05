@@ -1,6 +1,8 @@
 package com.employeeapp.controller;
 
-import com.employeeapp.model.*;
+import com.employeeapp.model.Role;
+import com.employeeapp.model.Task;
+import com.employeeapp.model.Team;
 import com.employeeapp.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
-import java.util.List;
 
 @Controller
 @RequestMapping("/admin")
@@ -27,7 +28,6 @@ public class TeamController {
         this.teamService = teamService;
         this.teamLeadService = teamLeadService;
         this.employeeService = employeeService;
-
         this.taskService = taskService;
     }
 
@@ -39,22 +39,13 @@ public class TeamController {
         return "admin/team/list_team";
     }
 
-
-    @GetMapping("/team_details/{id}")
-    public String loadTeamDetails(@PathVariable Long id,Model model){
-        Team teams = teamService.findById(id);
-        model.addAttribute("teams",teams);
-        return "";
-    }
 //line below ok
-    @GetMapping("/assignTeam/{id}")
-    public String assignTask(@PathVariable Long id,Model model){
-        Role role2 = roleService.findById(2L);
-        Role role3 = roleService.findById(3L);
+    @GetMapping("/viewTeam/{id}")
+    public String viewTask(@PathVariable Long id,Model model){
+        model.addAttribute("empCount",employeeService.countEmployee());
+        model.addAttribute("emp",employeeService.findAll());
         model.addAttribute("task",taskService.findById(id));
-        model.addAttribute("emp",employeeService.getEmployeeByRole(role2));
-        model.addAttribute("emp2",employeeService.getEmployeeByRole(role3));
-        return "/admin/team/assign_team";
+        return "/admin/team/detail_team";
     }
     @PostMapping("/addTeam")
     public String loadForm(@ModelAttribute("id") Long id, Team team){
@@ -64,31 +55,6 @@ public class TeamController {
         team.setDate(new Date());
 
         teamService.save(team);
-        return "redirect:/admin/manageTask";
-    }
-
-    @PostMapping("/assignTeam")
-    public String assignTeam(@ModelAttribute("teamLead") Employee teamLead,
-                             @ModelAttribute("id") Task id,
-                             @ModelAttribute("temployee") List<Employee> temployee){
-
-        TeamLead tl  = new TeamLead();
-        tl.setEmployee(teamLead);
-        //tl.setTask(id);
-
-        Team team = new Team();
-        team.setEmployee(temployee);
-        team.setTask(id);
-        team.setDate(new Date());
-        teamService.save(team);
-
-        tl.setTeam(team);
-
-
-
-        teamLeadService.save(tl);
-
-
         return "redirect:/admin/manageTask";
     }
 }

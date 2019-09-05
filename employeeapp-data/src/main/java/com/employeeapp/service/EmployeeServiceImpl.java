@@ -56,4 +56,10 @@ public class EmployeeServiceImpl implements EmployeeService {
        // return employeeRepository.findAllByRoleEquals(role);
         return employeeRepository.findByRole(role);
     }
+
+    @Override
+    public Long countEmployee() {
+       return employeeRepository.count();
+    }
+
 }

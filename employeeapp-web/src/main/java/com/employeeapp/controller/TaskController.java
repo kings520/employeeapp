@@ -1,5 +1,6 @@
 package com.employeeapp.controller;
 
+import com.employeeapp.model.Employee;
 import com.employeeapp.model.Role;
 import com.employeeapp.model.Task;
 import com.employeeapp.service.EmployeeService;
@@ -8,10 +9,7 @@ import com.employeeapp.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
@@ -31,12 +29,17 @@ public class TaskController {
     @GetMapping("/manageTask")
     public String loadAllTask(Model model){
         List<Task> task = taskService.findAll();
-        List<Role> role = roleService.findAll();
-        Role role2 = roleService.findById(2L);
         model.addAttribute("task",task);
-        model.addAttribute("role",role);
-        model.addAttribute("emp",employeeService.getEmployeeByRole(role2));
         return "admin/task/list_task";
+    }
+
+    @GetMapping("/newTask")
+    public String newTask(Model model){
+        Role role2 = roleService.findById(2L);
+        Role role3 = roleService.findById(3L);
+        model.addAttribute("emp",employeeService.getEmployeeByRole(role2));
+        model.addAttribute("emp2",employeeService.getEmployeeByRole(role3));
+        return "/admin/task/new_task";
     }
 
     @PostMapping("/addTask")
@@ -45,7 +48,9 @@ public class TaskController {
                           @RequestParam("dueDate") Date dueDate,
                           @RequestParam("status") String status,
                           @RequestParam("priority") String priority,
-                          @RequestParam("startDate") Date startDate){
+                          @RequestParam("startDate") Date startDate,
+                          @RequestParam("teamLead") Employee teamLead,
+                          @RequestParam("team") List<Employee> team){
 
         Task task = new Task();
         task.setTitle(title);
@@ -55,19 +60,18 @@ public class TaskController {
         task.setStatus(status);
         task.setPriority(priority);
         task.setCreatedDate(new Date());
+        task.setTeamLead(teamLead);
+        task.setEmployees(team);
         taskService.save(task);
 
         return "redirect:/admin/manageTask";
     }
 
-    @GetMapping("/newTask")
-    public String newTask(Model model){
-
-        Role role2 = roleService.findById(2L);
-        Role role3 = roleService.findById(3L);
-        //model.addAttribute("task",taskService.findById(id));
-        model.addAttribute("emp",employeeService.getEmployeeByRole(role2));
-        model.addAttribute("emp2",employeeService.getEmployeeByRole(role3));
-        return "/admin/task/new_task";
+    @GetMapping("/viewTask/{id}")
+    public String viewTask(@PathVariable Long id, Model model){
+        model.addAttribute("task",taskService.findById(id));
+        model.addAttribute("emp",employeeService.findAll());
+        return "/admin/task/detail_task";
     }
+
 }
