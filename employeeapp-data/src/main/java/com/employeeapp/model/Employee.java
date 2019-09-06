@@ -71,6 +71,10 @@ public class Employee extends BaseEntity {
     @OneToOne(mappedBy = "teamLead")
     private Task task;
 
+    @ManyToOne
+    @JoinTable(name = "task_team",joinColumns = @JoinColumn(name = "emp_id"),inverseJoinColumns = @JoinColumn(name = "task_id"))
+    private Task team;
+
     public Employee() {
     }
 
@@ -232,5 +236,13 @@ public class Employee extends BaseEntity {
 
     public void setTask(Task task) {
         this.task = task;
+    }
+
+    public Task getTeam() {
+        return team;
+    }
+
+    public void setTeam(Task team) {
+        this.team = team;
     }
 }

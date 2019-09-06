@@ -5,4 +5,5 @@ import com.employeeapp.model.Task;
 
 public interface TaskService extends CrudService<Task,Long> {
     Task findByTeamLead(Employee employee);
+   // Long countEmployee(Task task);
 }

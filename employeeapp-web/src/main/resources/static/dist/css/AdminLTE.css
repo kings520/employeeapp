@@ -4727,3 +4727,7 @@ table.text-center th {
     white-space: normal!important;
   }
 }
+.notice-list {
+  list-style: none;
+  padding: 0px;
+}

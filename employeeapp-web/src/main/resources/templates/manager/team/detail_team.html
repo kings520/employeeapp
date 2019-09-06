@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" th:replace="~{layout/mainLayout :: layout (~{::body},'home')}">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" th:replace="~{layout/managerLayout :: layout (~{::body},'home')}">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -18,7 +18,7 @@
                 <tr>
                     <td th:text="${empCount+' Members'}"></td>
                     <td>
-                        Team Quota(<span th:with="days=${T(java.util.concurrent.TimeUnit).DAYS}, millis=${T(java.util.concurrent.TimeUnit).MILLISECONDS}" th:text="${days.convert(#dates.createNow().getTime()-au.dueDate.getTime(), millis)}" />)
+                        Team Quota( <span th:text="${diffDays+' days, '+diffHours+' hours, '+diffMinutes+' minutes, '+diffSeconds+' seconds'}" /> )
                     </td>
                 </tr>
                 <tr>
@@ -26,9 +26,32 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <ul>
-                            <li th:each="as:${au.employees}" th:text="${as.surname+' '+as.firstName+' '+ as.otherName}"></li>
-                        </ul>
+                        <!--<div class="col-md-6 col-xs-12">-->
+                            <!--<div class="box-content card">-->
+                                <!--<h4 class="box-title"><i class="fa fa-globe ico"></i> Name</h4>-->
+                                <!--</div>-->
+                                <!--&lt;!&ndash; /.dropdown js__dropdown &ndash;&gt;-->
+                                <!--<div class="card-content" th:each="as:${au.employees}">-->
+                                    <!--<strong><i class="fa fa-book margin-r-5"></i> <span th:text="${as.surname+' '+as.firstName+' '+ as.otherName}">New Signup</span></strong>-->
+
+                                    <!--<p class="text-muted"> <a href="#">Assign Task</a> </p>-->
+                                    <!--<hr/>-->
+
+                                <!--</div>-->
+                                <!--&lt;!&ndash; /.card-content &ndash;&gt;-->
+                            <!--</div>-->
+                            <!-- /.box-content card -->
+                        <div class="post" th:each="as:${au.employees}">
+                            <div class="user-block">
+                                <img class="img-circle img-bordered-sm" src="../../dist/img/user1-128x128.jpg" alt="image">
+                                <strong><span class="username" th:text="${as.surname+' '+as.firstName+' '+ as.otherName}">Name</span></strong>
+                                <!--<span class="username">-->
+                          <!--<a href="#">Jonathan Burke Jr.</a>-->
+                          <!--<a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>-->
+                        <!--</span>-->
+                                <span class="description"><a href="#" data-remodal-target="remodal" class="waves-effect waves-light">Assign Task</a> </span>
+                            </div>
+                        </div>
                     </td>
                 </tr>
                 <!--<tr >-->
@@ -51,5 +74,32 @@
     </div><!-- /.box-body -->
 
 </div><!-- /.box -->
+<!-- Modal -->
+<div class="remodal" data-remodal-id="remodal" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc">
+    <button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
+    <div class="remodal-content">
+        <h2 class="box-title">Remodal</h2>
+        <form th:object="${task}" th:action="@{/admin/addTask}" method="post">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" class="form-control" id="title" placeholder="Enter Title" name="title"/>
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" rows="6" name="description" placeholder="Enter Description" class="form-control"></textarea>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-offset-5 col-sm-12">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button data-remodal-action="cancel" class="btn cancel">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+<!--end  Modal-->
 </body>
 </html>

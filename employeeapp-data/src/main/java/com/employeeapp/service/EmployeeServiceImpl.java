@@ -2,6 +2,7 @@ package com.employeeapp.service;
 
 import com.employeeapp.model.Employee;
 import com.employeeapp.model.Role;
+import com.employeeapp.model.Task;
 import com.employeeapp.repository.EmployeeRepository;
 import org.springframework.stereotype.Service;
 
@@ -58,8 +59,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Long countEmployee() {
-       return employeeRepository.count();
+    public Long countEmployee(Task task) {
+       return employeeRepository.countEmployeeByTeam(task);
     }
 
 }

@@ -18,7 +18,7 @@
                 <tr>
                     <td th:text="${empCount+' Members'}"></td>
                     <td>
-                        Team Quota(<span th:with="days=${T(java.util.concurrent.TimeUnit).DAYS}, millis=${T(java.util.concurrent.TimeUnit).MILLISECONDS}" th:text="${days.convert(#dates.createNow().getTime()-au.dueDate.getTime(), millis)}" />)
+                        Team Quota( <span th:text="${diffDays+' days, '+diffHours+' hours, '+diffMinutes+' minutes, '+diffSeconds+' seconds'}" /> )
                     </td>
                 </tr>
                 <tr>

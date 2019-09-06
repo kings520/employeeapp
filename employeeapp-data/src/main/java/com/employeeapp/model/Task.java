@@ -35,8 +35,7 @@ public class Task extends BaseEntity {
     @JoinColumn(name = "teamLead_id",referencedColumnName = "id")
     private Employee teamLead;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "task_team",joinColumns = @JoinColumn(name = "task_id"),inverseJoinColumns = @JoinColumn(name = "emp_id"))
+    @OneToMany(mappedBy = "team",cascade = CascadeType.ALL)
     private List<Employee> employees;
 
     public String getTitle() {

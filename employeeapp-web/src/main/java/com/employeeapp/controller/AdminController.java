@@ -24,7 +24,7 @@ public class AdminController {
     //@PreAuthorize("hasAnyRole('Role_Admin')" )
     @RequestMapping({"","/","/index","dashboard","index.html"})
     public String index(){
-        return "adminlayout";
+        return "admin/index";
     }
 
 //    @RequestMapping("/login")
