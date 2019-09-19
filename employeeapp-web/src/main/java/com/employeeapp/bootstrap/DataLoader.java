@@ -6,25 +6,14 @@ import org.springframework.boot.CommandLineRunner;
 
 //@Component
 public class DataLoader implements CommandLineRunner {
-   // private final TeamNameService teamNameService;
     private final RoleService roleService;
 
     public DataLoader( RoleService roleService) {
-        //this.teamNameService = teamNameService;
         this.roleService = roleService;
     }
 
     @Override
     public void run(String... args) throws Exception {
-//        TeamName t1 = new TeamName();
-//        t1.setName("Team A");
-//        t1.setDateAdded(new Date());
-//        teamNameService.save(t1);
-//
-//        TeamName t2 = new TeamName();
-//        t2.setName("Team B");
-//        t2.setDateAdded(new Date());
-//        teamNameService.save(t2);
 
         Role role1 = new Role();
         role1.setName("Admin");

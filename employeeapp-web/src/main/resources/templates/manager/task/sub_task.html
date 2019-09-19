@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" th:replace="~{layout/managerLayout :: layout (~{::body},'home')}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="box box-warning">
+    <div class="box-header with-border">
+        <h3 class="box-title">NEW TASK</h3>
+    </div>
+    <div class="box-body">
+        <div class="small-spacing">
+            <!--start form-->
+            <form th:object="${task}" th:action="@{/manager/addTask}" method="post">
+            <div class="col-lg-6 col-xs-12">
+                <div class="box-content card white">
+<!--                    <h4 class="box-title"></h4>-->
+                    <!-- /.box-title -->
+                    <div class="card-content">
+                        <div class="form-group" th:each="t:${task}">
+                            <!--<form th:object="${task}" th:action="@{/admin/addTask}" method="post">-->
+                            <label >Main Task ID</label>
+                            <input type="text" th:value="${t.id}" class="form-control" id="task" name="task2" disabled />
+                        </div>
+                        <div class="form-group">
+                            <label >Main Task</label>
+                            <input type="text" th:field="*{title}" class="form-control"  disabled />
+
+                        </div>
+                            <div class="form-group">
+                                <!--<form th:object="${task}" th:action="@{/admin/addTask}" method="post">-->
+<!--                                <label for="title">Title</label>-->
+                                <input type="text" class="form-control" id="title" placeholder="Enter Title" name="title"/>
+                            </div>
+                            <div class="form-group">
+                                <!--<label for="description">Description</label>-->
+                                <textarea id="description" rows="6" name="description" placeholder="Enter Description" class="form-control"></textarea>
+                            </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-offset-5 col-sm-12">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.card-content -->
+                </div>
+                <!-- /.box-content -->
+            </div>
+
+            </form>
+            <!--end form-->
+            <div class="col-lg-6 col-xs-12">
+                <div class="box-content card white">
+                    <h4 class="box-title">Task List: </h4>
+                    <!-- /.box-title -->
+                    <div class="card-content">
+                        <table class="table table-responsive no-padding">
+                            <tr th:each="sub,iterStat:${subTask}">
+                                <td th:text="${iterStat.count}">1</td>
+                                <td th:text="${sub.title}">task</td>
+                                <td>
+                                    <a th:href="@{'/manager/editSubTask/'+${sub.id}}" title="Edit Task" class="btn btn-primary"><i class="fas  fa-pen-square ml-2"></i></a>
+                                    <a th:href="@{/manager/deleteSubTask/{id}(id=${sub.id})}" title="Delete Task" class="btn btn-primary"><i class="fas fa-trash ml-2"></i></a>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+                    <!-- /.card-content -->
+                </div>
+                <!-- /.box-content -->
+            </div>
+        </div>
+        <!-- /.row -->
+    </div><!-- /.box-body -->
+
+</div><!-- /.box -->
+</body>
+</html>
