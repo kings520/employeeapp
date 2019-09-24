@@ -23,7 +23,7 @@ public class Employee extends BaseEntity {
     private String Phone;
 
     @Column(name = "email")
-    private String Email;
+    private String email;
 
     @Column(name = "dateofbirth")
     private Date DateOfBirth;
@@ -119,11 +119,11 @@ public class Employee extends BaseEntity {
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        email = email;
     }
 
     public Date getDateOfBirth() {

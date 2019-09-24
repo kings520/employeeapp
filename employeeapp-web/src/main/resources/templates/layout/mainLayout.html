@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html th:fragment="layout (template, menu)" xmlns:th="http://www.w3.org/1999/xhtml">
+<html th:fragment="layout (template, menu)" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -33,7 +34,7 @@
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <span class="logo-mini"><b>JC</b></span>
           <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b>JCart Admin</b></span>
+           <span class="logo-lg" sec:authentication="principal.username">Admin</span>!
         </a>
 
         <!-- Header Navbar -->
@@ -51,6 +52,8 @@
                   <img th:src="@{/dist/img/user.png}" class="user-image" alt="User Image"/>
                   <!-- hidden-xs hides the username on small devices so only the image appears. -->
                   <!--<span class="hidden-xs" sec:authentication="principal.user.name">User</span>-->
+                  <span sec:authentication="principal.username">Admin</span>!
+<!--                  <span sec:authentication="principal.Surname">Bob</span>-->
                 </a>
                 <ul class="dropdown-menu">
                   <!-- The user image in the menu -->
@@ -58,6 +61,7 @@
                     <img th:src="@{/dist/img/user.png}" class="img-circle" alt="User Image"/>
                     <p>
                       <!--<span sec:authentication="principal.user.name">User</span>-->
+                      <span sec:authentication="principal.username">Admin</span>!
                     </p>
                   </li>
                   
@@ -67,7 +71,8 @@
                       <a href="#" th:href="@{/myAccount}" class="btn btn-default btn-flat">Profile</a>
                     </div>
                     <div class="pull-right">
-                      <a href="logout" th:href="@{/logout}" class="btn btn-default btn-flat">Sign out</a>
+<!--                      <a href="logout" th:href="@{/logout}" class="btn btn-default btn-flat">Sign out</a>-->
+                      <span sec:authorize="isAuthenticated()"><a th:href="@{/logout}" class="btn btn-default btn-flat">Logout</a></span>
                     </div>
                   </li>
                 </ul>

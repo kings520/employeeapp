@@ -2,14 +2,10 @@ package com.employeeapp.controller;
 
 import com.employeeapp.model.Employee;
 import com.employeeapp.model.Role;
-;
 import com.employeeapp.service.EmployeeService;
 import com.employeeapp.service.RoleService;
-;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,7 +14,10 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
+
+;
+;
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Controller
 @RequestMapping("/admin")
@@ -29,8 +28,8 @@ public class EmployeeController {
     @Autowired
     private RoleService roleService;
 
-   // @Autowired
-    //private BCryptPasswordEncoder passwordEncoder;
+    //@Autowired
+    private BCryptPasswordEncoder passwordEncoder;
 
     @GetMapping("/manageEmployee")
     public String manageEmployee(Model model) {
@@ -82,14 +81,14 @@ public class EmployeeController {
         employee.setAccountName(accountName);
         employee.setAccountNumber(accountNumber);
 
-       // passwordEncoder = new BCryptPasswordEncoder();
+        passwordEncoder = new BCryptPasswordEncoder();
         //String hashedPassword = passwordEncoder.encode(password);
 
         //User user = new User();
         employee.setActive(1);
         employee.setUsername(username);
         //user.setPassword(hashedPassword);
-        employee.setPassword(password);
+        employee.setPassword(passwordEncoder.encode(password));
         //employee.setEmployee(employee);
         employee.setRole(roleName);
 
