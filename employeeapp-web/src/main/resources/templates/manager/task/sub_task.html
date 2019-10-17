@@ -58,12 +58,21 @@
                     <!-- /.box-title -->
                     <div class="card-content">
                         <table class="table table-responsive no-padding">
-                            <tr th:each="sub,iterStat:${subTask}">
-                                <td th:text="${iterStat.count}">1</td>
-                                <td th:text="${sub.title}">task</td>
-                                <td>
-                                    <a th:href="@{'/manager/editSubTask/'+${sub.id}}" title="Edit Task" class="btn btn-primary"><i class="fas  fa-pen-square ml-2"></i></a>
-                                    <a th:href="@{/manager/deleteSubTask/{id}(id=${sub.id})}" title="Delete Task" class="btn btn-primary"><i class="fas fa-trash ml-2"></i></a>
+                            <tr th:each="au,iterStat : ${task}">
+                                <td >
+                                    <div class="post" th:each="as:${au.employees}">
+
+                                        <div class="user-block">
+                                            <div> <input type="checkbox" id="checkbox-1" /></div>
+                                            <img class="img-circle img-bordered-sm" src="../../dist/img/user1-128x128.jpg" alt="image">
+                                            <strong><span class="username" th:text="${as.surname+' '+as.firstName+' '+ as.otherName}">Name</span></strong>
+                                            <!--<span class="username">-->
+                                            <!--<a href="#">Jonathan Burke Jr.</a>-->
+                                            <!--<a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>-->
+                                            <!--</span>-->
+                                            <span class="description"><a href="#" data-remodal-target="remodal" class="waves-effect waves-light">Task</a> </span>
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                         </table>

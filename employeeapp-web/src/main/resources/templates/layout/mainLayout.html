@@ -52,8 +52,9 @@
                   <img th:src="@{/dist/img/user.png}" class="user-image" alt="User Image"/>
                   <!-- hidden-xs hides the username on small devices so only the image appears. -->
                   <!--<span class="hidden-xs" sec:authentication="principal.user.name">User</span>-->
-                  <span sec:authentication="principal.username">Admin</span>!
+<!--                  <span sec:authentication="principal.username">Admin</span>!-->
 <!--                  <span sec:authentication="principal.Surname">Bob</span>-->
+                   Welcome <span th:text="${#authentication.name}"/>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- The user image in the menu -->

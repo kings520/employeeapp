@@ -509,3 +509,9 @@ a.tooltip:hover:before{
   list-style: none;
   padding: 0px;
 }
+.checkbox, .radio {
+    position: relative;
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

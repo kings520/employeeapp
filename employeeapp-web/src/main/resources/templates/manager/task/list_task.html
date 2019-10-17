@@ -12,9 +12,7 @@
                 <h3 class="box-title">List of Task</h3>
                 <div class="box-tools">
                     <div style="width: 400px;">
-                        <a th:href="@{formEmployee}" class="btn btn-primary"><i class="fas fa-trash ml-2"></i>Delete</a>
-                        <a th:href="@{/admin/newTask}" class="btn btn-primary" title="Completed Task"><i class="fas fa-check"></i>Completed</a>
-                        <a th:href="@{/admin/newTask}" class="btn btn-primary"><i class="fas fa-plus"></i>Add New Task</a>
+
                     </div>
                 </div>
             </div><!-- /.box-header -->
@@ -39,7 +37,7 @@
                         <td>
                             <a th:href="@{'/manager/subTask/'+${au.id}}" title="Add New Task" class="btn btn-primary"><i class="fas fa-plus-square"></i></a>
                             <a th:href="@{'/manager/viewTask/'+${au.id}}" title="Task Details" class="btn btn-primary"><i class="fas  fa-folder-open ml-2"></i></a>
-                            <a th:href="@{/manager/deleteTask/{id}(id=${au.id})}" title="Delete Task" class="btn btn-primary"><i class="fas fa-trash ml-2"></i></a>
+
                             <a th:href="@{/manager/viewTeam/{id}(id=${au.id})}" title="View Team" class="btn btn-primary"><i class="fas fa-users ml-2"></i></a>
                         </td>
                     </tr>

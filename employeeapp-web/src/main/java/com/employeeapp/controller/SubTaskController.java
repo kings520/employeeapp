@@ -2,10 +2,13 @@ package com.employeeapp.controller;
 
 import com.employeeapp.model.SubTask;
 import com.employeeapp.model.Task;
+import com.employeeapp.service.EmployeeService;
 import com.employeeapp.service.SubTaskService;
 import com.employeeapp.service.TaskService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -15,6 +18,8 @@ import java.util.Date;
 public class SubTaskController {
     private SubTaskService taskService;
     private TaskService ts;
+    @Autowired
+    EmployeeService employeeService;
 
     public SubTaskController(SubTaskService taskService, TaskService ts) {
         this.taskService = taskService;
@@ -26,6 +31,7 @@ public class SubTaskController {
         Task task = ts.findById(id);
         model.addAttribute("task",task);
         model.addAttribute("subTask",taskService.findAll());
+        model.addAttribute("emp", employeeService.findAll());
         return "manager/task/sub_task";
     }
 
@@ -48,5 +54,9 @@ public class SubTaskController {
         model.addAttribute("subTask",taskService.findAll());
         return "manager/task/sub_task";
     }
-    //public String
+    public String loadSubTask(@PathVariable("id") Long id,ModelMap mp){
+        SubTask subTask = taskService.findById(id);
+        mp.addAttribute("subtask",subTask);
+        return "";
+    }
 }

@@ -49,7 +49,7 @@
                           <!--<a href="#">Jonathan Burke Jr.</a>-->
                           <!--<a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>-->
                         <!--</span>-->
-                                <span class="description"><a href="#" data-remodal-target="remodal" class="waves-effect waves-light">Assign Task</a> </span>
+                                <span class="description"><a href="#" th:href="@{'/manager/subTask/'+${as.id}}" data-remodal-target="remodal" class="waves-effect waves-light">Assign Task</a> </span>
                             </div>
                         </div>
                     </td>
@@ -80,14 +80,22 @@
     <div class="remodal-content">
         <h2 class="box-title">Remodal</h2>
         <form th:object="${task}" th:action="@{/admin/addTask}" method="post">
-            <div class="form-group">
-                <label for="title">Title</label>
-                <input type="text" class="form-control" id="title" placeholder="Enter Title" name="title"/>
+            <div class="checkbox">
+                <table class="table table-striped table-responsive">
+                    <thead>
+                    <tr>
+                        <td colspan="2"> Assign Task To: </td>
+                    </tr>
+                    </thead>
+                    <tr>
+                        <td width="20px"><input type="checkbox" id="checkbox-1" /></td>
+                        <td> <label for="checkbox-1">Default</label></td>
+                    </tr>
+                </table>
+
+
             </div>
-            <div class="form-group">
-                <label for="description">Description</label>
-                <textarea id="description" rows="6" name="description" placeholder="Enter Description" class="form-control"></textarea>
-            </div>
+
             <div class="form-group">
                 <div class="row">
                     <div class="col-sm-offset-5 col-sm-12">
